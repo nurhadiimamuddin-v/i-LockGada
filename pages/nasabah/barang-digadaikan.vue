@@ -97,6 +97,8 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
+
 import { collection, getDocs, doc, deleteDoc, updateDoc, query, where } from 'firebase/firestore'
 
 definePageMeta({

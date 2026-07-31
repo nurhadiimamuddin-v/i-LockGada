@@ -103,6 +103,8 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
+
 const { logout } = useAuth()
 
 const handleLogout = () => {

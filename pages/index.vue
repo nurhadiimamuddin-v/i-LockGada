@@ -48,6 +48,8 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
+
 definePageMeta({
   layout: 'default'
 })

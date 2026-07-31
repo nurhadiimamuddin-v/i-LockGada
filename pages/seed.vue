@@ -12,6 +12,8 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
+
 const config = useRuntimeConfig()
 
 const loading = ref(true)

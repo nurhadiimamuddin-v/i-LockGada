@@ -37,6 +37,8 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
+
 import { collection, query, where, getDocs } from 'firebase/firestore'
 
 definePageMeta({

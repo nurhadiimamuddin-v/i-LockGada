@@ -115,6 +115,8 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
+
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import * as XLSX from 'xlsx'
 
