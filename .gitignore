@@ -1,7 +1,18 @@
-template/node_modules/
-vendor/
-composer.lock
-router.php
-package.json
-composer.json
-api/
+# Nuxt 3 / Node.js
+node_modules/
+.nuxt/
+.output/
+dist/
+.env
+
+# Old PHP files & backups
+php_backup/
+
+# Firebase
+.firebase/
+firebase-debug.log
+
+# IDE & OS
+.vscode/
+.DS_Store
+Thumbs.db
