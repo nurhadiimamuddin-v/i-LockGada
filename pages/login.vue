@@ -6,7 +6,7 @@
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                 <img src="/images/44.png" alt="logo" style="width: 250px; height: auto;">
-                <h4 class="mt-1">Aplikasi Smart Locker Pegadaian</h4>
+                <h4 class="mt-1">Aplikasi i-LockGada Pegadaian</h4>
                 
               <h6 class="font-weight-light">Sign in to continue.</h6>
 
@@ -112,3 +112,4 @@ useHead({
   ]
 })
 </script>
+

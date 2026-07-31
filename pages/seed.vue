@@ -38,21 +38,21 @@ onMounted(async () => {
     const users = [
       {
         nama: "Nurhadi Imamuddin (Direktur)",
-        username: "nurhadiimamuddin",
+        username: "direktur",
         password: "180105direk",
         role: "direktur",
         pegadaian_id: pId
       },
       {
         nama: "Nurhadi Imamuddin (Manager)",
-        username: "nurhadiimamuddin",
+        username: "manager",
         password: "180105rah",
         role: "manager",
         pegadaian_id: pId
       },
       {
         nama: "Nurhadi Imamuddin (Nasabah)",
-        username: "nurhadiimamuddin",
+        username: "nasabah",
         nik: "nurhadiimamuddin",
         password: "180105nas",
         role: "nasabah",

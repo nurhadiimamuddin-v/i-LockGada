@@ -21,7 +21,7 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
-      title: 'Smart Locker Pegadaian',
+      title: 'i-LockGada',
       link: [
         { rel: 'shortcut icon', href: '/images/9.png' }
       ]
