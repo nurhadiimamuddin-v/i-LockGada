@@ -98,25 +98,6 @@
 <script setup>
 const { logout } = useAuth()
 
-useHead({
-  link: [
-    { rel: 'stylesheet', href: '/vendors/mdi/css/materialdesignicons.min.css' },
-    { rel: 'stylesheet', href: '/vendors/base/vendor.bundle.base.css' },
-    { rel: 'stylesheet', href: 'https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css' },
-    { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css' },
-    { rel: 'stylesheet', href: '/css/style.css' }
-  ],
-  script: [
-    { src: '/vendors/base/vendor.bundle.base.js', body: true },
-    { src: 'https://code.jquery.com/jquery-3.7.1.min.js', body: true },
-    { src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js', body: true },
-    { src: 'https://cdn.datatables.net/2.2.2/js/dataTables.js', body: true },
-    { src: '/js/off-canvas.js', body: true },
-    { src: '/js/hoverable-collapse.js', body: true },
-    { src: '/js/template.js', body: true }
-  ]
-})
-
 const handleLogout = () => {
   if (confirm('Apakah Anda yakin ingin keluar?')) {
     logout()
