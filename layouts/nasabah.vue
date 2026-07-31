@@ -4,7 +4,7 @@
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="navbar-brand-wrapper d-flex justify-content-center">
         <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">  
-          <NuxtLink class="navbar-brand brand-logo" to="/"><img src="/images/44.png" alt="logo" style="width: 140px; height: auto;"/></NuxtLink>
+          <a class="navbar-brand brand-logo" href="/"><img src="/images/44.png" alt="logo" style="width: 140px; height: auto;"/></a>
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-sort-variant"></span>
           </button>
@@ -45,10 +45,10 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/nasabah">
+            <a class="nav-link" href="/nasabah">
               <i class="mdi mdi-home menu-icon"></i>
               <span class="menu-title">Home</span>
-            </NuxtLink>
+            </a>
           </li>
           
           <li class="nav-item">
@@ -59,24 +59,24 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <NuxtLink class="nav-link" to="/nasabah/form-gadai">Barang akan di gadaikan</NuxtLink></li>
-                <li class="nav-item"> <NuxtLink class="nav-link" to="/nasabah/form-ambil">Barang Akan di ambil</NuxtLink></li>
+                <li class="nav-item"> <a class="nav-link" href="/nasabah/form-gadai">Barang akan di gadaikan</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/nasabah/form-ambil">Barang Akan di ambil</a></li>
               </ul>
             </div>
           </li>
           
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/nasabah/barang-digadaikan">
+            <a class="nav-link" href="/nasabah/barang-digadaikan">
               <i class="mdi mdi-view-headline menu-icon"></i>
               <span class="menu-title">Barang digadaikan</span>
-            </NuxtLink>
+            </a>
           </li>
           
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/nasabah/barang-diambil">
+            <a class="nav-link" href="/nasabah/barang-diambil">
               <i class="mdi mdi-history menu-icon"></i>
               <span class="menu-title">History Pengambilan</span>
-            </NuxtLink>
+            </a>
           </li>
 
           <li class="nav-item">

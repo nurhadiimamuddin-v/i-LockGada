@@ -170,11 +170,10 @@ const loadData = async () => {
     pegadaianList.value = temp
 
     // Init datatable baru
-    setTimeout(() => {
-      if (window.$ && !$.fn.DataTable.isDataTable('#pegadaianTable')) {
-        $('#pegadaianTable').DataTable()
-      }
-    }, 100)
+    await nextTick()
+    if (window.$ && !$.fn.DataTable.isDataTable('#pegadaianTable')) {
+      $('#pegadaianTable').DataTable()
+    }
   } catch (error) {
     console.error('Error fetching data:', error)
   }

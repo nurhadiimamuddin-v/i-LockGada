@@ -4,7 +4,7 @@
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="navbar-brand-wrapper d-flex justify-content-center">
         <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">  
-          <NuxtLink class="navbar-brand brand-logo" to="/"><img src="/images/44.png" alt="logo" style="width: 140px; height: auto;"/></NuxtLink>
+          <a class="navbar-brand brand-logo" href="/"><img src="/images/44.png" alt="logo" style="width: 140px; height: auto;"/></a>
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-sort-variant"></span>
           </button>
@@ -45,28 +45,28 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/direktur">
+            <a class="nav-link" href="/direktur">
               <i class="mdi mdi-home menu-icon"></i>
               <span class="menu-title">Home</span>
-            </NuxtLink>
+            </a>
           </li>
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/direktur/pegadaian">
+            <a class="nav-link" href="/direktur/pegadaian">
               <i class="mdi mdi-bank menu-icon"></i>
               <span class="menu-title">Pegadaian</span>
-            </NuxtLink>
+            </a>
           </li>
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/direktur/jenis-barang">
+            <a class="nav-link" href="/direktur/jenis-barang">
               <i class="mdi mdi-chart-bar menu-icon"></i>
               <span class="menu-title">Jenis Barang</span>
-            </NuxtLink>
+            </a>
           </li>
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/direktur/manager">
+            <a class="nav-link" href="/direktur/manager">
               <i class="mdi mdi-account menu-icon"></i>
               <span class="menu-title">Manager</span>
-            </NuxtLink>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" @click.prevent="handleLogout" href="#">

@@ -145,11 +145,10 @@ const loadData = async () => {
     
     gadaiList.value = temp
 
-    setTimeout(() => {
-      if (window.$ && !$.fn.DataTable.isDataTable('#riwayatGadaiTable')) {
-        $('#riwayatGadaiTable').DataTable()
-      }
-    }, 100)
+    await nextTick()
+    if (window.$ && !$.fn.DataTable.isDataTable('#riwayatGadaiTable')) {
+      $('#riwayatGadaiTable').DataTable()
+    }
   } catch (error) {
     console.error('Error fetching data:', error)
   }

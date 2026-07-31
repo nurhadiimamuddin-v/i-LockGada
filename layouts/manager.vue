@@ -4,7 +4,7 @@
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="navbar-brand-wrapper d-flex justify-content-center">
         <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">  
-          <NuxtLink class="navbar-brand brand-logo" to="/"><img src="/images/44.png" alt="logo" style="width: 140px; height: auto;"/></NuxtLink>
+          <a class="navbar-brand brand-logo" href="/"><img src="/images/44.png" alt="logo" style="width: 140px; height: auto;"/></a>
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-sort-variant"></span>
           </button>
@@ -45,46 +45,46 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/manager">
+            <a class="nav-link" href="/manager">
               <i class="mdi mdi-home menu-icon"></i>
               <span class="menu-title">Home</span>
-            </NuxtLink>
+            </a>
           </li>
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/manager/nasabah">
+            <a class="nav-link" href="/manager/nasabah">
               <i class="mdi mdi-account-key menu-icon"></i>
               <span class="menu-title">Pegawai Pegadaian</span>
-            </NuxtLink>
+            </a>
           </li>
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/manager/rahin">
+            <a class="nav-link" href="/manager/rahin">
               <i class="mdi mdi-account-search menu-icon"></i>
               <span class="menu-title">Data Nasabah</span>
-            </NuxtLink>
+            </a>
           </li>
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/manager/locker">
+            <a class="nav-link" href="/manager/locker">
               <i class="mdi mdi-lock menu-icon"></i>
               <span class="menu-title">Locker</span>
-            </NuxtLink>
+            </a>
           </li>
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/manager/riwayat-gadai">
+            <a class="nav-link" href="/manager/riwayat-gadai">
               <i class="mdi mdi-file menu-icon"></i>
               <span class="menu-title">Barang yang digadaikan</span>
-            </NuxtLink>
+            </a>
           </li>
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/manager/riwayat-ambil">
+            <a class="nav-link" href="/manager/riwayat-ambil">
               <i class="mdi mdi-check menu-icon"></i>
               <span class="menu-title">Barang yang telah diambil</span>
-            </NuxtLink>
+            </a>
           </li>
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/manager/riwayat">
+            <a class="nav-link" href="/manager/riwayat">
               <i class="mdi mdi-chart-bar menu-icon"></i>
               <span class="menu-title">Riwayat Pegadaian</span>
-            </NuxtLink>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" @click.prevent="handleLogout" href="#">

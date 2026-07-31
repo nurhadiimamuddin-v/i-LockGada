@@ -146,11 +146,10 @@ const loadData = async () => {
     
     ambilList.value = temp
 
-    setTimeout(() => {
-      if (window.$ && !$.fn.DataTable.isDataTable('#barangDiambilTable')) {
-        $('#barangDiambilTable').DataTable()
-      }
-    }, 100)
+    await nextTick()
+    if (window.$ && !$.fn.DataTable.isDataTable('#barangDiambilTable')) {
+      $('#barangDiambilTable').DataTable()
+    }
   } catch (error) {
     console.error('Error fetching data:', error)
   }

@@ -215,11 +215,10 @@ const loadData = async () => {
     
     nasabahList.value = temp
 
-    setTimeout(() => {
-      if (window.$ && !$.fn.DataTable.isDataTable('#nasabahTable')) {
-        $('#nasabahTable').DataTable()
-      }
-    }, 100)
+    await nextTick()
+    if (window.$ && !$.fn.DataTable.isDataTable('#nasabahTable')) {
+      $('#nasabahTable').DataTable()
+    }
   } catch (error) {
     console.error('Error fetching data:', error)
   }

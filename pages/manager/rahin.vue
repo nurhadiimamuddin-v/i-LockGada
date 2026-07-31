@@ -196,11 +196,10 @@ const loadData = async () => {
     
     rahinList.value = temp
 
-    setTimeout(() => {
-      if (window.$ && !$.fn.DataTable.isDataTable('#rahinTable')) {
-        $('#rahinTable').DataTable()
-      }
-    }, 100)
+    await nextTick()
+    if (window.$ && !$.fn.DataTable.isDataTable('#rahinTable')) {
+      $('#rahinTable').DataTable()
+    }
   } catch (error) {
     console.error('Error fetching data:', error)
   }

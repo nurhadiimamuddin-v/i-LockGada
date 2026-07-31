@@ -186,11 +186,10 @@ const loadData = async () => {
     
     riwayatList.value = temp
 
-    setTimeout(() => {
-      if (window.$ && !$.fn.DataTable.isDataTable('#riwayatTable')) {
-        $('#riwayatTable').DataTable()
-      }
-    }, 100)
+    await nextTick()
+    if (window.$ && !$.fn.DataTable.isDataTable('#riwayatTable')) {
+      $('#riwayatTable').DataTable()
+    }
   } catch (error) {
     console.error('Error fetching data:', error)
   }

@@ -156,11 +156,10 @@ onMounted(async () => {
     managerData.value = temp
 
     // Init DataTable after Vue renders
-    setTimeout(() => {
-      if (window.$ && !$.fn.DataTable.isDataTable('#direkturDashboardTable')) {
-        $('#direkturDashboardTable').DataTable()
-      }
-    }, 100)
+    await nextTick()
+    if (window.$ && !$.fn.DataTable.isDataTable('#direkturDashboardTable')) {
+      $('#direkturDashboardTable').DataTable()
+    }
 
   } catch (error) {
     console.error('Error loading data:', error)

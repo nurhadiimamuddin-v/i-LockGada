@@ -172,11 +172,10 @@ const loadData = async () => {
     
     lockerList.value = temp
 
-    setTimeout(() => {
-      if (window.$ && !$.fn.DataTable.isDataTable('#lockerTable')) {
-        $('#lockerTable').DataTable()
-      }
-    }, 100)
+    await nextTick()
+    if (window.$ && !$.fn.DataTable.isDataTable('#lockerTable')) {
+      $('#lockerTable').DataTable()
+    }
   } catch (error) {
     console.error('Error fetching data:', error)
   }

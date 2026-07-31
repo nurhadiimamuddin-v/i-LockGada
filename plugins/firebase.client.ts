@@ -1,6 +1,4 @@
-import { initializeApp } from 'firebase/app'
-import { getFirestore } from 'firebase/firestore'
-import { getStorage } from 'firebase/storage'
+import { initFirebase } from '~/utils/firebase'
 import { getAnalytics } from 'firebase/analytics'
 import { markRaw } from 'vue'
 
@@ -17,9 +15,8 @@ export default defineNuxtPlugin(() => {
     measurementId: config.public.firebaseMeasurementId
   }
 
-  const app = initializeApp(firebaseConfig)
-  const db = getFirestore(app)
-  const storage = getStorage(app)
+  const { app, db, storage } = initFirebase(firebaseConfig)
+
   let analytics = null
   if (typeof window !== 'undefined') {
     analytics = getAnalytics(app)

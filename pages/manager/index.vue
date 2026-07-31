@@ -196,11 +196,10 @@ onMounted(async () => {
     }
 
     // Init DataTable after Vue renders
-    setTimeout(() => {
-      if (window.$ && !$.fn.DataTable.isDataTable('#managerDashboardTable')) {
-        $('#managerDashboardTable').DataTable()
-      }
-    }, 100)
+    await nextTick()
+    if (window.$ && !$.fn.DataTable.isDataTable('#managerDashboardTable')) {
+      $('#managerDashboardTable').DataTable()
+    }
 
   } catch (error) {
     console.error('Error loading data:', error)

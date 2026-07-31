@@ -168,11 +168,10 @@ const loadData = async () => {
     
     jenisBarangList.value = temp
 
-    setTimeout(() => {
-      if (window.$ && !$.fn.DataTable.isDataTable('#jenisBarangTable')) {
-        $('#jenisBarangTable').DataTable()
-      }
-    }, 100)
+    await nextTick()
+    if (window.$ && !$.fn.DataTable.isDataTable('#jenisBarangTable')) {
+      $('#jenisBarangTable').DataTable()
+    }
   } catch (error) {
     console.error('Error fetching data:', error)
   }

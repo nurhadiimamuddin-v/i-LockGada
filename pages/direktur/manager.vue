@@ -214,11 +214,10 @@ const loadData = async () => {
     
     managerList.value = mTemp
 
-    setTimeout(() => {
-      if (window.$ && !$.fn.DataTable.isDataTable('#managerTable')) {
-        $('#managerTable').DataTable()
-      }
-    }, 100)
+    await nextTick()
+    if (window.$ && !$.fn.DataTable.isDataTable('#managerTable')) {
+      $('#managerTable').DataTable()
+    }
   } catch (error) {
     console.error('Error fetching data:', error)
   }
