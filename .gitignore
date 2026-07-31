@@ -1,3 +1,7 @@
 template/node_modules/
 vendor/
 composer.lock
+router.php
+package.json
+composer.json
+api/

@@ -1,18 +1,7 @@
 {
-  "functions": {
-    "api/index.php": {
-      "runtime": "vercel-php@0.6.2",
-      "includeFiles": "{**/*.php,**/*.html,**/*.css,**/*.js,**/*.png,**/*.jpg,**/*.jpeg}"
-    }
-  },
   "routes": [
     {
-      "src": "/(.*\\.php)",
-      "dest": "/api/index.php"
-    },
-    {
-      "src": "/",
-      "dest": "/api/index.php"
+      "handle": "filesystem"
     }
   ]
 }
