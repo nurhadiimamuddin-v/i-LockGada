@@ -82,6 +82,9 @@
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-3">
               <p class="card-title mb-0">Data Pegadaian Di Seluruh Indonesia</p>
+              <button class="btn" style="color:white; background-color: #20a1ad;" @click="handleExport">
+                <i class="mdi mdi-download"></i> Download
+              </button>
             </div>
             <div class="table-responsive">
               <table id="direkturDashboardTable" class="display" style="width:100%">
@@ -120,6 +123,7 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { useExport } from '~/composables/useExport'
 
 import { collection, getDocs, query, where } from 'firebase/firestore'
 
@@ -133,6 +137,17 @@ const { userName, userRole, userUsername } = useAuth()
 
 const totalPegadaian = ref(0)
 const managerData = ref([])
+
+const { exportToCSV } = useExport()
+
+const handleExport = () => {
+  exportToCSV(managerData.value, 'Data_Manager_Pegadaian', [
+    { label: 'Kode Pegadaian', key: 'kode_pegadaian' },
+    { label: 'Lokasi Pegadaian', key: 'lokasi_pegadaian' },
+    { label: 'Nama Manager', key: 'nama' },
+    { label: 'Username Manager', key: 'username' }
+  ])
+}
 
 onMounted(async () => {
   try {

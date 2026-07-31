@@ -24,17 +24,17 @@
           <div class="card-body">
             <div class="d-flex flex-wrap justify-content-xl-between mb-1">
               <div class="d-flex flex-grow-1 align-items-center justify-content-center p-3 item" style="min-width: 0;">
-                <button class="btn btn-block" style="background-color: #152453; color: white; min-width: 180px; min-height: 50px; font-size: 1rem;">
+                <button @click="handleExportGadai" class="btn btn-block" style="background-color: #152453; color: white; min-width: 180px; min-height: 50px; font-size: 1rem;">
                   <i class="mdi mdi-download mr-2"></i> Barang Yang Digadaikan
                 </button>
               </div>
               <div class="d-flex flex-grow-1 align-items-center justify-content-center p-3 item" style="min-width: 0;">
-                <button class="btn btn-block" style="background-color: #73bf43; color: white; min-width: 180px; min-height: 50px; font-size: 1rem;">
+                <button @click="handleExportAmbil" class="btn btn-block" style="background-color: #73bf43; color: white; min-width: 180px; min-height: 50px; font-size: 1rem;">
                   <i class="mdi mdi-download mr-2"></i> Barang Yang Telah Diambil
                 </button>
               </div>
               <div class="d-flex flex-grow-1 align-items-center justify-content-center p-3 item" style="min-width: 0;">
-                <button class="btn btn-block" style="background-color: #20a1ad; color: white; min-width: 180px; min-height: 50px; font-size: 1rem;">
+                <button @click="handleExportPegawai" class="btn btn-block" style="background-color: #20a1ad; color: white; min-width: 180px; min-height: 50px; font-size: 1rem;">
                   <i class="mdi mdi-download mr-2"></i> Data Pegawai Pegadaian
                 </button>
               </div>
@@ -153,6 +153,7 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { useExport } from '~/composables/useExport'
 
 import { doc, getDoc, collection, getDocs, query, where } from 'firebase/firestore'
 
@@ -167,10 +168,49 @@ const { user, userName, userRole, userUsername } = useAuth()
 const pegadaianData = ref({})
 const pegawaiData = ref([])
 
+const { exportToCSV } = useExport()
+
 const formatDate = (dateStr) => {
   if (!dateStr) return '-'
   const date = new Date(dateStr)
   return new Intl.DateTimeFormat('id-ID', { day: '2-digit', month: 'long', year: 'numeric' }).format(date)
+}
+
+const handleExportGadai = async () => {
+  const pId = user.value?.pegadaian_id
+  if (!pId) return
+  const snap = await getDocs(query(collection($db, 'barang_digadaikan'), where('pegadaian_id', '==', pId)))
+  const data = []
+  snap.forEach(doc => data.push(doc.data()))
+  exportToCSV(data, 'Barang_Digadaikan', [
+    { label: 'Kode Peminjaman', key: 'kode_peminjaman' },
+    { label: 'Nama Nasabah', key: 'nama_nasabah' },
+    { label: 'Nama Barang', key: 'nama_barang' },
+    { label: 'Tanggal Masuk', key: 'tanggal_masuk' }
+  ])
+}
+
+const handleExportAmbil = async () => {
+  const pId = user.value?.pegadaian_id
+  if (!pId) return
+  const snap = await getDocs(query(collection($db, 'barang_diambil'), where('pegadaian_id', '==', pId)))
+  const data = []
+  snap.forEach(doc => data.push(doc.data()))
+  exportToCSV(data, 'Barang_Diambil', [
+    { label: 'Kode Peminjaman', key: 'kode_peminjaman' },
+    { label: 'Nama Nasabah', key: 'nama_nasabah' },
+    { label: 'Nama Barang', key: 'nama_barang' },
+    { label: 'Tanggal Keluar', key: 'tanggal_keluar' }
+  ])
+}
+
+const handleExportPegawai = () => {
+  exportToCSV(pegawaiData.value, 'Data_Pegawai', [
+    { label: 'Nama', key: 'nama' },
+    { label: 'Tempat Lahir', key: 'tempat_lahir' },
+    { label: 'Tanggal Lahir', key: 'tanggal_lahir' },
+    { label: 'Username', key: 'username' }
+  ])
 }
 
 onMounted(async () => {

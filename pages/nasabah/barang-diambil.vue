@@ -91,6 +91,7 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { usePrint } from '~/composables/usePrint'
 
 import { collection, getDocs, query, where } from 'firebase/firestore'
 
@@ -104,6 +105,8 @@ const { user } = useAuth()
 
 const ambilList = ref([])
 const selectedFoto = ref('')
+
+const { printSurat } = usePrint()
 
 const loadData = async () => {
   try {
@@ -166,7 +169,11 @@ const showFoto = (fotoUrl) => {
 const cetakSurat = (id) => {
   const item = ambilList.value.find(i => i.id === id)
   if (item) {
-    cetakSuratAmbil(item)
+    printSurat('Barang Diambil', {
+      'NIK Nasabah': item.nik_rahin,
+      'NIK Pegawai': item.nik_pegawai,
+      'Tanggal Diterima': item.tgl_diterima
+    })
   }
 }
 
