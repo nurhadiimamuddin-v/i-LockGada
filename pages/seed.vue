@@ -34,12 +34,20 @@ onMounted(async () => {
     let pId = null
     if (!pSnap.empty) {
       pId = pSnap.docs[0].id
+      console.log("4. Pegadaian sudah ada, id:", pId)
     } else {
-      const pRef = await addDoc(collection(db, "pegadaian"), {
-        kode_pegadaian: "PGD-001",
-        lokasi_pegadaian: "Cabang Utama"
-      })
-      pId = pRef.id
+      console.log("4. Membuat pegadaian baru...")
+      try {
+        const pRef = await addDoc(collection(db, "pegadaian"), {
+          kode_pegadaian: "PGD-001",
+          lokasi_pegadaian: "Cabang Utama"
+        })
+        pId = pRef.id
+        console.log("5. Berhasil membuat pegadaian:", pId)
+      } catch (e) {
+        console.error("Gagal membuat pegadaian:", e)
+        throw e
+      }
     }
 
     const users = [
@@ -67,10 +75,19 @@ onMounted(async () => {
       }
     ]
 
+    console.log("6. Memulai insert users...")
     for (const user of users) {
-      await addDoc(collection(db, "users"), user)
+      console.log("-> Mencoba insert user:", user.username)
+      try {
+        await addDoc(collection(db, "users"), user)
+        console.log("-> Berhasil insert:", user.username)
+      } catch (e) {
+        console.error("-> Gagal insert:", user.username, e)
+        throw e
+      }
     }
     
+    console.log("7. Semua selesai!")
     success.value = true
   } catch (err) {
     console.error(err)
