@@ -15,7 +15,7 @@ export default defineNuxtPlugin(() => {
     measurementId: config.public.firebaseMeasurementId
   }
 
-  const { app, db, storage } = initFirebase(firebaseConfig)
+  const { app, db, storage } = initFirebase(firebaseConfig, config.public.firebaseAppCheckSiteKey)
 
   let analytics = null
   if (typeof window !== 'undefined') {

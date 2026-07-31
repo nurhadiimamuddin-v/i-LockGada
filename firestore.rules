@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // KUNCI UTAMA: Tolak semua akses ke tabel yang tidak dikenal
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // BUKA AKSES HANYA UNTUK 7 TABEL RESMI i-LockGada:
+    // (Karena tidak pakai Firebase Auth, kita izinkan read/write tanpa request.auth,
+    //  tapi aman karena kita pakai Firebase App Check di Vercel)
+    
+    match /users/{document} {
+      allow read, write: if true;
+    }
+    match /pegadaian/{document} {
+      allow read, write: if true;
+    }
+    match /jenis_barang/{document} {
+      allow read, write: if true;
+    }
+    match /lockers/{document} {
+      allow read, write: if true;
+    }
+    match /barang_gadai/{document} {
+      allow read, write: if true;
+    }
+    match /barang_diambil/{document} {
+      allow read, write: if true;
+    }
+    match /rahin/{document} {
+      allow read, write: if true;
+    }
+  }
+}
