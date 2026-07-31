@@ -2,6 +2,7 @@ import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 import { getAnalytics } from 'firebase/analytics'
+import { markRaw } from 'vue'
 
 export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig()
@@ -19,14 +20,17 @@ export default defineNuxtPlugin(() => {
   const app = initializeApp(firebaseConfig)
   const db = getFirestore(app)
   const storage = getStorage(app)
-  const analytics = getAnalytics(app)
+  let analytics = null
+  if (typeof window !== 'undefined') {
+    analytics = getAnalytics(app)
+  }
 
   return {
     provide: {
-      firebaseApp: app,
-      db,
-      storage,
-      analytics
+      firebaseApp: markRaw(app),
+      db: markRaw(db),
+      storage: markRaw(storage),
+      analytics: analytics ? markRaw(analytics) : null
     }
   }
 })
