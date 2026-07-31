@@ -20,10 +20,17 @@ const success = ref(false)
 const errorMsg = ref('')
 
 onMounted(async () => {
+  console.log("=== Memulai proses seeding ===")
   try {
     const db = $db
+    if (!db) throw new Error("Firestore db object is undefined!")
+    console.log("1. Firestore instance didapatkan")
+    
     // Cek apakah sudah ada pegadaian
+    console.log("2. Mencoba membaca collection 'pegadaian'...")
     const pSnap = await getDocs(collection(db, "pegadaian"))
+    console.log("3. Berhasil membaca collection 'pegadaian'")
+    
     let pId = null
     if (!pSnap.empty) {
       pId = pSnap.docs[0].id
