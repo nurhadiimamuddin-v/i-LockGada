@@ -1,8 +1,9 @@
 <?php
-// Router untuk Vercel - Menghindari batas 12 Serverless Functions
-// Dengan menjadikan 1 file ini sebagai entrypoint untuk semua file PHP
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 
-chdir(__DIR__ . '/../'); // Pindah ke root folder agar require() relatif berjalan normal
+// Pindah ke root folder agar require() relatif berjalan normal
+chdir(__DIR__ . '/../'); 
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
@@ -19,15 +20,14 @@ if (strpos($path, '/api/') === 0) {
 
 $file = __DIR__ . '/..' . $path;
 
-// Periksa apakah file yang diminta ada dan berekstensi .php
+// Periksa apakah file yang diminta ada
 if (file_exists($file) && is_file($file) && pathinfo($file, PATHINFO_EXTENSION) === 'php') {
     require $file;
 } else if (file_exists($file) && is_file($file)) {
-    // Jika file statik nyasar ke router (seharusnya ditangani Vercel)
     $mime = mime_content_type($file);
     header("Content-Type: $mime");
     readfile($file);
 } else {
     http_response_code(404);
-    echo "404 Not Found";
+    echo "404 Not Found: " . htmlspecialchars($path);
 }
