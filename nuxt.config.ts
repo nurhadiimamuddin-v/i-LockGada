@@ -23,7 +23,29 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
       title: 'i-LockGada',
       link: [
-        { rel: 'shortcut icon', href: '/images/9.png' }
+        { rel: 'shortcut icon', href: '/images/9.png' },
+        { rel: 'stylesheet', href: '/vendors/mdi/css/materialdesignicons.min.css' },
+        { rel: 'stylesheet', href: '/vendors/base/vendor.bundle.base.css' },
+        { rel: 'stylesheet', href: '/vendors/datatables.net-bs4/dataTables.bootstrap4.css' },
+        { rel: 'stylesheet', href: 'https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css' },
+        { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css' },
+        { rel: 'stylesheet', href: '/DataTables/datatables.css' },
+        { rel: 'stylesheet', href: '/css/style.css' }
+      ],
+      script: [
+        { src: 'https://code.jquery.com/jquery-3.7.1.js', body: true },
+        { src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js', body: true },
+        { src: '/vendors/base/vendor.bundle.base.js', body: true },
+        { src: '/vendors/chart.js/Chart.min.js', body: true },
+        { src: '/vendors/datatables.net/jquery.dataTables.js', body: true },
+        { src: '/vendors/datatables.net-bs4/dataTables.bootstrap4.js', body: true },
+        { src: 'https://cdn.datatables.net/2.2.2/js/dataTables.js', body: true },
+        { src: '/DataTables/datatables.js', body: true },
+        { src: '/js/off-canvas.js', body: true },
+        { src: '/js/hoverable-collapse.js', body: true },
+        { src: '/js/template.js', body: true },
+        { src: '/js/dashboard.js', body: true },
+        { src: '/js/data-table.js', body: true }
       ]
     }
   },
