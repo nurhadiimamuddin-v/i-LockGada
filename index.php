@@ -21,7 +21,7 @@
         }
     </style>
 </head>
-<body class="relative flex flex-col select-none">
+<body class="relative flex flex-col select-none cursor-not-allowed">
 
 
     <main class="flex-1 w-full max-w-[1600px] mx-auto px-4 sm:px-8 relative flex flex-col items-center justify-center pt-20 pb-16 h-full">
@@ -41,7 +41,7 @@
             <p class="text-[18px] md:text-[22px] leading-tight text-[#0d0d0d] mb-6" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: -0.02em;">
                 Kelola pendataan barang masuk dan keluar dengan lebih cerdas, serta kendalikan dan buka loker langsung melalui platform ini.
             </p>
-            <a href="login.php" class="inline-block text-white text-sm font-medium px-7 py-3 transition-opacity hover:opacity-90 rounded-md" style="background-color: #0aaa4e; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+            <a href="login.php" class="pointer-events-auto cursor-pointer inline-block text-white text-sm font-medium px-7 py-3 transition-opacity hover:opacity-90 rounded-md" style="background-color: #0aaa4e; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
                 Get Started
             </a>
         </div>
