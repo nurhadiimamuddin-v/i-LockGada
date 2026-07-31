@@ -1,27 +1,32 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
+import { getAnalytics } from 'firebase/analytics'
 
 export default defineNuxtPlugin(() => {
+  const config = useRuntimeConfig()
+  
   const firebaseConfig = {
-    apiKey: "AIzaSyBYyoKn58N8Ns0aAwFJ104SPq1PPgCr53I",
-    authDomain: "i-lockgada.firebaseapp.com",
-    projectId: "i-lockgada",
-    storageBucket: "i-lockgada.firebasestorage.app",
-    messagingSenderId: "994810445842",
-    appId: "1:994810445842:web:f893e930ee492c262158cb",
-    measurementId: "G-WYPEML2CGW"
+    apiKey: config.public.firebaseApiKey,
+    authDomain: config.public.firebaseAuthDomain,
+    projectId: config.public.firebaseProjectId,
+    storageBucket: config.public.firebaseStorageBucket,
+    messagingSenderId: config.public.firebaseMessagingSenderId,
+    appId: config.public.firebaseAppId,
+    measurementId: config.public.firebaseMeasurementId
   }
 
   const app = initializeApp(firebaseConfig)
   const db = getFirestore(app)
   const storage = getStorage(app)
+  const analytics = getAnalytics(app)
 
   return {
     provide: {
       firebaseApp: app,
       db,
-      storage
+      storage,
+      analytics
     }
   }
 })
