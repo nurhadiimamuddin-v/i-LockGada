@@ -59,28 +59,28 @@ const handleLogin = async () => {
     const usersRef = collection($db, 'users')
     let matchedUser = null
 
-    // Cek direktur
-    let q = query(usersRef, where('username', '==', username.value), where('role', '==', 'direktur'))
-    let snapshot = await getDocs(q)
-    if (!snapshot.empty && snapshot.docs[0].data().password === password.value) {
-      matchedUser = { id: snapshot.docs[0].id, ...snapshot.docs[0].data() }
-    }
-
-    // Cek manager
-    if (!matchedUser) {
-      q = query(usersRef, where('username', '==', username.value), where('role', '==', 'manager'))
-      snapshot = await getDocs(q)
-      if (!snapshot.empty && snapshot.docs[0].data().password === password.value) {
-        matchedUser = { id: snapshot.docs[0].id, ...snapshot.docs[0].data() }
+    // Pertama, cari berdasarkan username
+    const qUsername = query(usersRef, where('username', '==', username.value))
+    const snapUsername = await getDocs(qUsername)
+    
+    if (!snapUsername.empty) {
+      // Cari yang passwordnya cocok
+      const doc = snapUsername.docs.find(d => d.data().password === password.value)
+      if (doc) {
+        matchedUser = { id: doc.id, ...doc.data() }
       }
     }
 
-    // Cek nasabah (nik)
+    // Jika tidak ketemu berdasarkan username, cari berdasarkan NIK (untuk nasabah)
     if (!matchedUser) {
-      q = query(usersRef, where('nik', '==', username.value), where('role', '==', 'nasabah'))
-      snapshot = await getDocs(q)
-      if (!snapshot.empty && snapshot.docs[0].data().password === password.value) {
-        matchedUser = { id: snapshot.docs[0].id, ...snapshot.docs[0].data() }
+      const qNik = query(usersRef, where('nik', '==', username.value))
+      const snapNik = await getDocs(qNik)
+      
+      if (!snapNik.empty) {
+        const doc = snapNik.docs.find(d => d.data().password === password.value)
+        if (doc) {
+          matchedUser = { id: doc.id, ...doc.data() }
+        }
       }
     }
 
